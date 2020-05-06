@@ -41,7 +41,7 @@ public class ClientThread extends Thread {
                         = Controller.getInstance().executeRequest(requestObject);
                 objectOutputStream.writeObject(responseObject);
             } catch (IOException | ClassNotFoundException ex) {
-                logger.error(ex.getMessage());
+                return;
             }
         }
     }
