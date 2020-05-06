@@ -1,1 +1,4 @@
 2020-05-06 11:35:40 ERROR ServerThread:40 - socket closed
+2020-05-06 13:22:46 FATAL ConnectionFactory:32 - Access denied for user 'root'@'localhost' (using password: YES)
+2020-05-06 13:22:46 ERROR SQLImplementation:69 - Connection is not created!
+2020-05-06 13:22:46 ERROR ServiceCalcuteRangList:38 - Connection is not created!
