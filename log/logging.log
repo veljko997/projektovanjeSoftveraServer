@@ -2,3 +2,130 @@
 2020-05-06 13:22:46 FATAL ConnectionFactory:32 - Access denied for user 'root'@'localhost' (using password: YES)
 2020-05-06 13:22:46 ERROR SQLImplementation:69 - Connection is not created!
 2020-05-06 13:22:46 ERROR ServiceCalcuteRangList:38 - Connection is not created!
+2020-06-07 11:42:47 FATAL ServerThread:27 - Address already in use: JVM_Bind
+2020-06-07 11:52:31 FATAL ServerThread:27 - Address already in use: JVM_Bind
+2020-06-07 13:47:17 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-07 13:48:11 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-07 13:48:59 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-07 13:51:11 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-07 14:31:51 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-07 14:45:44 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-08 10:29:40 ERROR SQLImplementation:236 - Cannot add or update a child row: a foreign key constraint fails (`fifaranglist`.`selection`, CONSTRAINT `userID_constraint` FOREIGN KEY (`userID`) REFERENCES `user` (`id`) ON UPDATE CASCADE)
+2020-06-08 10:38:30 ERROR SQLImplementation:289 - Duplicate entry 'veljko' for key 'username'
+2020-06-08 10:42:29 ERROR SQLImplementation:289 - Duplicate entry 'veljko123' for key 'username'
+2020-06-08 15:31:49 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:31:49 ERROR GetAllSelections:88 - java.sql.SQLException: Connection is not created!
+2020-06-08 15:35:50 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:35:50 ERROR GetAllSelections:88 - java.sql.SQLException: Connection is not created!
+2020-06-08 15:35:54 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:35:54 ERROR GetAllSelections:88 - java.sql.SQLException: Connection is not created!
+2020-06-08 15:40:27 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:40:27 ERROR GetAllSelections:88 - java.sql.SQLException: Connection is not created!
+2020-06-08 15:50:50 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:50:50 ERROR GetAllSelections:87 - java.sql.SQLException: Connection is not created!
+2020-06-08 15:50:59 FATAL ConnectionFactory:32 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2020-06-08 15:50:59 ERROR GetAllSelections:87 - java.sql.SQLException: Connection is not created!
+2020-06-08 16:01:34 ERROR FrmMain:217 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:01:49 ERROR FrmMain:217 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:01:50 ERROR FrmMain:217 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:03:09 ERROR FrmMain:218 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:03:22 ERROR FrmMain:218 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:04:16 ERROR FrmMain:217 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-08 16:05:09 ERROR FrmMain:217 - java.rmi.server.ExportException: internal error: ObjID already in use
+2020-06-15 15:06:59 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:07:02 ERROR ServerThread:40 - socket closed
+2020-06-15 15:19:22 FATAL Controller:43 - services.users.Login
+2020-06-15 15:20:10 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:20:31 FATAL Controller:43 - services.users.Login
+2020-06-15 15:23:17 FATAL Controller:43 - services.users.Login
+2020-06-15 15:23:22 FATAL Controller:43 - services.users.Login
+2020-06-15 15:23:25 FATAL Controller:43 - services.users.Login
+2020-06-15 15:23:26 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:23:36 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:26:43 FATAL Controller:43 - services.users.Login
+2020-06-15 15:27:31 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:28:51 FATAL Controller:43 - services.users.Login
+2020-06-15 15:29:51 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:30:07 FATAL Controller:43 - services.users.Login
+2020-06-15 15:30:20 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:30:36 FATAL Controller:43 - services.users.Login
+2020-06-15 15:30:47 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:31:56 FATAL Controller:43 - services.users.Login
+2020-06-15 15:32:01 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:08 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:09 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:10 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:10 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:10 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:15 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:16 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:16 FATAL Controller:43 - services.users.Registration
+2020-06-15 15:32:32 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:32:49 FATAL Controller:43 - services.users.Login
+2020-06-15 15:33:12 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:33:28 FATAL Controller:43 - services.users.Login
+2020-06-15 15:33:44 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:34:28 FATAL Controller:43 - services.users.Login
+2020-06-15 15:34:28 FATAL Controller:43 - services.users.Login
+2020-06-15 15:34:31 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:35:11 FATAL Controller:43 - services.users.Login
+2020-06-15 15:38:47 FATAL Controller:43 - services.users.Login
+2020-06-15 15:38:58 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:39:01 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:39:13 FATAL Controller:43 - services.users.Login
+2020-06-15 15:39:36 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:43:25 FATAL Controller:43 - services.users.Login
+2020-06-15 15:44:20 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:44:32 FATAL Controller:43 - services.users.Login
+2020-06-15 15:44:38 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:46:00 FATAL Controller:43 - services.users.Login
+2020-06-15 15:46:28 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:48:22 FATAL Controller:43 - services.users.Login
+2020-06-15 15:48:26 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:50:01 FATAL ServerThread:27 - Address already in use: JVM_Bind
+2020-06-15 15:50:10 FATAL ServerThread:27 - Address already in use: JVM_Bind
+2020-06-15 15:50:54 FATAL Controller:43 - services.users.Login
+2020-06-15 15:51:45 FATAL ServerThread:27 - Address already in use: JVM_Bind
+2020-06-15 15:51:55 FATAL Controller:43 - services.users.Login
+2020-06-15 15:52:10 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:52:13 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:52:30 FATAL Controller:44 - services.users.Login
+2020-06-15 15:52:38 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:53:59 FATAL Controller:44 - services.users.socketLogin
+2020-06-15 15:54:14 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 15:55:05 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:02:50 ERROR ServerThread:40 - socket closed
+2020-06-15 16:03:13 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:03:15 ERROR ServerThread:40 - socket closed
+2020-06-15 16:07:40 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:13:37 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:13:39 ERROR ServerThread:40 - socket closed
+2020-06-15 16:17:42 ERROR ServerThread:40 - socket closed
+2020-06-15 16:18:32 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:18:35 ERROR ServerThread:40 - socket closed
+2020-06-15 16:20:19 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:31:46 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:31:55 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-15 16:31:57 ERROR ServerThread:40 - socket closed
+2020-06-27 15:57:55 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:07:17 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:07:19 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:33:42 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:33:54 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:34:52 ERROR FrmMain:217 - java.rmi.server.ExportException: Port already in use: 1099; nested exception is: 
+	java.net.BindException: Address already in use: JVM_Bind
+2020-06-27 16:35:13 ERROR ClientThread:44 - java.net.SocketException: Connection reset
+2020-06-27 16:36:04 ERROR ServerThread:40 - socket closed
+2020-06-27 16:36:09 ERROR ClientThread:44 - java.net.SocketException: Connection reset

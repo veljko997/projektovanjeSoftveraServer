@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services.users;
+package services.users.socket;
 
-import domain.Match;
-import java.sql.SQLException;
-import java.util.HashMap;
+import domain.Selection;
 import storage.SQLImplementation;
 import transfer.RequestObject;
 import transfer.ResponseObject;
@@ -15,23 +13,18 @@ import util.ResponseStatus;
 
 /**
  *
- * @author veljko
+ * @author Veljko
  */
-public class SaveMatch implements Service {
+public class DeactiveSelection implements Service {
 
     @Override
     public ResponseObject execute(RequestObject requestObject) {
+        Selection selection = (Selection) requestObject.getData();
         ResponseObject responseObject = new ResponseObject();
-        try {
-            SQLImplementation sQLImplementation = new SQLImplementation();
-            HashMap<String, Object> hashMap = (HashMap<String, Object>) requestObject.getData();
-            Match match = (Match) hashMap.get("Match");
-            Integer id = (Integer) hashMap.get("Id");
-            sQLImplementation.saveMatch(match, id);
+        if (new SQLImplementation().deactivateSelection(selection)) {
             responseObject.setStatus(ResponseStatus.SUCESS);
-        } catch (SQLException ex) {
+        } else {
             responseObject.setStatus(ResponseStatus.ERROR);
-            responseObject.setErrorMessage(ex.getMessage());
         }
         return responseObject;
     }

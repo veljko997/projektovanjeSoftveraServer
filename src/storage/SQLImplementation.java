@@ -21,7 +21,6 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.log4j.Logger;
-import services.users.GetMatches;
 import staticFactory.ConfederationFactory;
 import staticFactory.MatchTypeFactory;
 
@@ -42,6 +41,8 @@ public class SQLImplementation implements DatabaseOperations {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
+            
+            System.out.println("aaaaa");
 
             return rs.absolute(1) ? new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4), rs.getBoolean(5)) : null;
         }
@@ -369,7 +370,7 @@ public class SQLImplementation implements DatabaseOperations {
     }
 
     @Override
-    public void saveMatch(Match match, Integer id) throws SQLException {
+    public boolean saveMatch(Match match, Integer id) throws SQLException {
         String upit = "INSERT INTO matches(HOST,away,hostGoals,awayGoals,DATE,matchtype,userID) VALUES  (?,?,?,?,?,?,?)";
 
         try (Connection connection = ConnectionFactory.getInstance().getConnection();
@@ -385,6 +386,7 @@ public class SQLImplementation implements DatabaseOperations {
             System.out.println(preparedStatement);
             preparedStatement.execute();
             connection.commit();
+            return true;
 
         } catch (SQLException ex) {
             throw ex;

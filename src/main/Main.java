@@ -12,6 +12,7 @@ import ui.form.FrmMain;
  * @author veljko
  */
 public class Main {
+
     public static void main(String[] args) {
         FrmMain frmMain = new FrmMain();
         frmMain.setVisible(true);

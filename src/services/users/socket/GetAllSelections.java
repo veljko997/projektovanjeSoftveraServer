@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services.users;
+package services.users.socket;
 
-import domain.Selection;
+import org.apache.log4j.Logger;
 import storage.SQLImplementation;
 import transfer.RequestObject;
 import transfer.ResponseObject;
@@ -13,18 +13,21 @@ import util.ResponseStatus;
 
 /**
  *
- * @author Veljko
+ * @author veljko
  */
-public class DeactiveSelection implements Service {
+public class GetAllSelections implements Service {
+
+    private final Logger logger = Logger.getLogger(GetAllSelections.class);
 
     @Override
     public ResponseObject execute(RequestObject requestObject) {
-        Selection selection = (Selection) requestObject.getData();
         ResponseObject responseObject = new ResponseObject();
-        if (new SQLImplementation().deactivateSelection(selection)) {
+        try {
+            responseObject.setData(new SQLImplementation().getAllSelections());
             responseObject.setStatus(ResponseStatus.SUCESS);
-        } else {
+        } catch (Exception ex) {
             responseObject.setStatus(ResponseStatus.ERROR);
+            logger.info(ex.getMessage());
         }
         return responseObject;
     }

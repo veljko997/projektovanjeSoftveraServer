@@ -9,7 +9,7 @@ import domain.User;
 import java.util.List;
 import org.apache.log4j.Logger;
 import services.server.ServiceReadDatabaseProperties;
-import services.users.Service;
+import services.users.socket.Service;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 
@@ -37,7 +37,7 @@ public class Controller {
 
         try {
             Service service
-                    = (Service) Class.forName("services.users." + operation).getConstructor().newInstance();
+                    = (Service) Class.forName("services.users.socket." + operation).getConstructor().newInstance();
             return service.execute(requestObject);
         } catch (Exception ex) {
             logger.fatal(ex.getMessage());

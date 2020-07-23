@@ -6,12 +6,15 @@
 package ui.form;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.logging.Level;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import services.server.ServiceCalcuteRangList;
+import services.users.rmi.RMIServer;
 import thread.ServerThread;
 
 /**
@@ -25,11 +28,13 @@ public class FrmMain extends javax.swing.JFrame {
      */
     private ServerThread serverThread;
     private Logger logger = Logger.getLogger(FrmMain.class);
+    private static Registry registry;
 
     public FrmMain() {
         initComponents();
         initListeners();
         jMenuItemStop.setEnabled(false);
+        jMenuItemRMIStop.setEnabled(false);
     }
 
     /**
@@ -41,20 +46,23 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuBar = new javax.swing.JMenuBar();
         jMenuServer = new javax.swing.JMenu();
         jMenuItemStart = new javax.swing.JMenuItem();
         jMenuItemStop = new javax.swing.JMenuItem();
+        jMenuRMIServer = new javax.swing.JMenu();
+        jMenuItemRMIStart = new javax.swing.JMenuItem();
+        jMenuItemRMIStop = new javax.swing.JMenuItem();
         JMenuConfiguartion = new javax.swing.JMenu();
         jMenuItemDatabaseConfiguartion = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuRangList = new javax.swing.JMenu();
         jMenuItemCalculate = new javax.swing.JMenuItem();
         JMenuUsers = new javax.swing.JMenu();
         jMenuItemAllUsers = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenuServer.setText("Server");
+        jMenuServer.setText("Socket Server");
 
         jMenuItemStart.setText("Start");
         jMenuServer.add(jMenuItemStart);
@@ -62,30 +70,40 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuItemStop.setText("Stop");
         jMenuServer.add(jMenuItemStop);
 
-        jMenuBar1.add(jMenuServer);
+        jMenuBar.add(jMenuServer);
+
+        jMenuRMIServer.setText("RMI Server");
+
+        jMenuItemRMIStart.setText("Start");
+        jMenuRMIServer.add(jMenuItemRMIStart);
+
+        jMenuItemRMIStop.setText("Stop");
+        jMenuRMIServer.add(jMenuItemRMIStop);
+
+        jMenuBar.add(jMenuRMIServer);
 
         JMenuConfiguartion.setText("Configuration");
 
         jMenuItemDatabaseConfiguartion.setText("Database");
         JMenuConfiguartion.add(jMenuItemDatabaseConfiguartion);
 
-        jMenuBar1.add(JMenuConfiguartion);
+        jMenuBar.add(JMenuConfiguartion);
 
-        jMenu1.setText("Rang List");
+        jMenuRangList.setText("Rang List");
 
         jMenuItemCalculate.setText("Calculate");
-        jMenu1.add(jMenuItemCalculate);
+        jMenuRangList.add(jMenuItemCalculate);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenuRangList);
 
         JMenuUsers.setText("Users");
 
         jMenuItemAllUsers.setText("All users");
         JMenuUsers.add(jMenuItemAllUsers);
 
-        jMenuBar1.add(JMenuUsers);
+        jMenuBar.add(JMenuUsers);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,86 +139,103 @@ public class FrmMain extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmMain().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmMain().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuConfiguartion;
     private javax.swing.JMenu JMenuUsers;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItemAllUsers;
     private javax.swing.JMenuItem jMenuItemCalculate;
     private javax.swing.JMenuItem jMenuItemDatabaseConfiguartion;
+    private javax.swing.JMenuItem jMenuItemRMIStart;
+    private javax.swing.JMenuItem jMenuItemRMIStop;
     private javax.swing.JMenuItem jMenuItemStart;
     private javax.swing.JMenuItem jMenuItemStop;
+    private javax.swing.JMenu jMenuRMIServer;
+    private javax.swing.JMenu jMenuRangList;
     private javax.swing.JMenu jMenuServer;
     // End of variables declaration//GEN-END:variables
 
     private void initListeners() {
-        jMenuItemStart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (serverThread == null || !serverThread.isAlive()) {
-                    serverThread = new ServerThread();
-                    serverThread.start();
+        jMenuItemStart.addActionListener((ActionEvent e) -> {
+            if (serverThread == null || !serverThread.isAlive()) {
+                serverThread = new ServerThread();
+                serverThread.start();
 
-                    jMenuItemStart.setEnabled(false);
-                    jMenuItemStop.setEnabled(true);
-                }
+                jMenuItemStart.setEnabled(false);
+                jMenuItemStop.setEnabled(true);
             }
         });
 
-        jMenuItemStop.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (serverThread.getServerSocket() != null && !serverThread.getServerSocket().isClosed()) {
-                    try {
-                        serverThread.getServerSocket().close();
-
-                        jMenuItemStart.setEnabled(true);
-                        jMenuItemStop.setEnabled(false);
-                    } catch (IOException ex) {
-                        logger.error(ex.getMessage());
-                    }
-                }
-            }
-        });
-        
-        jMenuItemAllUsers.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmAllUsers().setVisible(true);
-            }
-        });
-        
-        jMenuItemDatabaseConfiguartion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmDatabaseConfiguration().setVisible(true);
-            }
-        });
-        
-        jMenuItemCalculate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        jMenuItemStop.addActionListener((ActionEvent e) -> {
+            if (serverThread.getServerSocket() != null && !serverThread.getServerSocket().isClosed()) {
                 try {
-                    ServiceCalcuteRangList.calculate();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(getFrm(), "Server error. Wrong database parametrs.", "Error", 1);
+                    serverThread.getServerSocket().close();
+
+                    jMenuItemStart.setEnabled(true);
+                    jMenuItemStop.setEnabled(false);
+                } catch (IOException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         });
+
+        jMenuItemAllUsers.addActionListener((ActionEvent e) -> {
+            new FrmAllUsers().setVisible(true);
+        });
+
+        jMenuItemDatabaseConfiguartion.addActionListener((ActionEvent e) -> {
+            new FrmDatabaseConfiguration().setVisible(true);
+        });
+
+        jMenuItemCalculate.addActionListener((ActionEvent e) -> {
+            try {
+                ServiceCalcuteRangList.calculate();
+            } catch (Exception ex) {
+                logger.error(ex);
+                JOptionPane.showMessageDialog(getFrm(), "Server error. Wrong database parametrs.", "Error", 1);
+            }
+        });
+
+        jMenuItemRMIStart.addActionListener((ActionEvent e) -> {
+            try {
+                registry = getRegistry();
+                registry.rebind("Server", new RMIServer());
+                System.out.println("RMI server created.");
+
+                jMenuItemRMIStop.setEnabled(true);
+                jMenuItemRMIStart.setEnabled(false);
+            } catch (RemoteException ex) {
+                logger.error(ex);
+            }
+        });
+
+        jMenuItemRMIStop.addActionListener((ActionEvent e) -> {
+            try {
+                registry.unbind("Server");
+                 
+                jMenuItemRMIStop.setEnabled(false);
+                jMenuItemRMIStart.setEnabled(true);
+            } catch (RemoteException | NotBoundException ex) {
+                logger.error(ex);
+            }
+        });
+
     }
     
+    public static Registry getRegistry() throws RemoteException {
+        if(registry==null) registry = LocateRegistry.createRegistry(1099);
+        return registry;
+    }
+
     public FrmMain getFrm() {
         return this;
     }

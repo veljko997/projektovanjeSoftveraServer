@@ -22,7 +22,7 @@ public class ServerThread extends Thread {
     public ServerThread() {
         try {
             serverSocket = new ServerSocket(9000);
-            System.out.println("Server created.");
+            System.out.println("Socket server created.");
         } catch (IOException ex) {
             logger.fatal(ex.getMessage());
         }

@@ -43,7 +43,7 @@ public interface DatabaseOperations {
 
     public void updatePoints(Selection selection);
 
-    public void saveMatch(Match match, Integer id) throws SQLException;
+    public boolean saveMatch(Match match, Integer id) throws SQLException;
 
     public List<Match> getAwayMatches(Selection selection);
 

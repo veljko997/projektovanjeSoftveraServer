@@ -1,4 +1,4 @@
-package services.users;
+package services.users.socket;
 
 
 import transfer.RequestObject;
